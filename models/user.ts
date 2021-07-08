@@ -1,7 +1,21 @@
-interface user {
+interface IUser {
+    uid: number,
     firstname: string;
     lastname: string;
     email: string;
 }
 
-export default user;
+interface IQuestion {
+    userRef: string;
+    topicRef: string;
+    title: string;
+    followers: string[];
+}
+
+interface IAnswer {
+    questinRef: string;
+    userRef: string;
+    likes: number;
+}
+
+export default IUser;
