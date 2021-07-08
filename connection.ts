@@ -1,11 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose, { connection } from 'mongoose';
 
 mongoose.connect('mongodb://localhost:27017/quora', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {
-    console.log("connected to database")
+}, (err) => {
+    if (err)
+        console.log('error connecting database')
+    else
+        console.log("connected to database")
 })
-const con = mongoose.connection;
+const con = connection;
 
 export default con;

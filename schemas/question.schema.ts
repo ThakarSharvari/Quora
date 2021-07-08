@@ -1,12 +1,12 @@
-import * as mongoose from "mongoose";
+import { model, Schema } from "mongoose";
 
-const questionSchema = new mongoose.Schema({
-    userRef: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    topicRef: { type: mongoose.Schema.Types.ObjectId, ref: 'Topic', required: true },
+const question_schema = new Schema({
+    userRef: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    topicRef: { type: Schema.Types.ObjectId, ref: 'Topic', required: true },
     title: { type: String, required: true, maxlength: 150 },
-    followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }]
+    followers: [{ type: Schema.Types.ObjectId, ref: 'User', required: true }]
 })
 
-const Question = mongoose.model('Question', questionSchema);
+const Question = model('Question', question_schema);
 
 export default Question

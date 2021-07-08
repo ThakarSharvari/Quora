@@ -1,11 +1,11 @@
-import * as mongoose from "mongoose";
+import { model, Schema } from "mongoose";
 
-const titleSchema = new mongoose.Schema({
+const title_schema = new Schema({
     title: { type: String, required: true, maxlength: 50 }
 }
     //{ versionKey: '_v1' }
 )
 
-const Topic = mongoose.model('Topic', titleSchema);
+const Topic = model('Topic', title_schema);
 
 export default Topic

@@ -1,11 +1,11 @@
-import * as mongoose from "mongoose";
+import { model, Schema } from "mongoose";
 
-const answerSchema = new mongoose.Schema({
-    questinRef: { type: mongoose.Schema.Types.ObjectId, ref: 'Question', required: true },
-    userRef: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+const answer_schema = new Schema({
+    questinRef: { type: Schema.Types.ObjectId, ref: 'Question', required: true },
+    userRef: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     likes: { type: Number, default: 0 }
 })
 
-const Answer = mongoose.model('Answer', answerSchema);
+const Answer = model('Answer', answer_schema);
 
 export default Answer

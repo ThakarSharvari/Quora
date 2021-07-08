@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Express with Typescript! http://localhost:${PORT}`);
+    console.log(`Server Started !!! http://localhost:${PORT}`);
 });
 
 app.use(express.json())

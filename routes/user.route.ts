@@ -1,21 +1,21 @@
 import { Router } from 'express';
-import user from "../models/user";
+import { IUser } from '../models/quora';
 import User from '../schemas/user.schema';
 
-const userRouter = Router();
+const user_router = Router();
 
-userRouter.get('/', async (req, res) => {
+user_router.get('/', async (req, res) => {
     try {
-        const usermodel = await User.find({})
-        res.status(200).json({ data: usermodel, status: true })
+        const user_model = await User.find({})
+        res.status(200).json({ data: user_model, status: true })
     } catch (error) {
         res.status(200).json({ data: error.message, status: false })
     }
 })
 
-userRouter.post('/', async (req, res) => {
+user_router.post('/', async (req, res) => {
     try {
-        let user: user = req.body;
+        let user: IUser = req.body;
         await User.create(user)
         res.status(200).json({ data: "User Created Successfully", status: true })
     } catch (error) {
@@ -23,16 +23,16 @@ userRouter.post('/', async (req, res) => {
     }
 })
 
-userRouter.get('/:id', async (req, res) => {
+user_router.get('/:id', async (req, res) => {
     try {
-        const usermodel = await User.findById(req.params.id)
-        res.status(200).json({ data: usermodel, status: true })
+        const user_model = await User.findById(req.params.id)
+        res.status(200).json({ data: user_model, status: true })
     } catch (error) {
         res.status(200).json({ data: error.message, status: false })
     }
 })
 
-userRouter.delete('/:id', async (req, res) => {
+user_router.delete('/:id', async (req, res) => {
     try {
         await User.deleteOne({ _id: req.params.id })
         res.status(200).json({ data: "User Deleted Successfully", status: true })
@@ -41,7 +41,7 @@ userRouter.delete('/:id', async (req, res) => {
     }
 })
 
-userRouter.put('/', async (req, res) => {
+user_router.put('/', async (req, res) => {
     try {
         await User.updateOne(req.body)
         res.status(200).json({ data: "User Updated Successfully", status: true })
@@ -49,4 +49,4 @@ userRouter.put('/', async (req, res) => {
         res.status(200).json({ data: error.message, status: false })
     }
 })
-export default userRouter;
+export default user_router;
